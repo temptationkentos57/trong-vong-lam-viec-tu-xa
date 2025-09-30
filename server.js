@@ -9,7 +9,8 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Kết nối MongoDB
-mongoose.connect('mongodb://localhost:27017/trongvonglamviectuxa', { useNewUrlParser: true, useUnifiedTopology: true })
+const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/trongvonglamviectuxa';
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Kết nối MongoDB thành công!'))
   .catch(err => console.error('Lỗi kết nối MongoDB:', err));
 
